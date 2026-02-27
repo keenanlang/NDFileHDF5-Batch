@@ -3586,7 +3586,7 @@ void NDFileHDF5Batch::report(FILE *fp, int details)
 }
 
 /** Configuration routine.  Called directly, or from the iocsh function in NDFileEpics */
-extern "C" int NDFileHDF5Configure(const char *portName, int queueSize, int blockingCallbacks,
+extern "C" int NDFileHDF5BatchConfigure(const char *portName, int queueSize, int blockingCallbacks,
                                    const char *NDArrayPort, int NDArrayAddr,
                                    int priority, int stackSize)
 {
@@ -3991,7 +3991,7 @@ static const iocshArg * const initArgs[] = {&initArg0,
 static const iocshFuncDef initFuncDef = {"NDFileHDF5BatchConfigure",7,initArgs};
 static void initCallFunc(const iocshArgBuf *args)
 {
-  NDFileHDF5Configure(args[0].sval, args[1].ival, args[2].ival, args[3].sval,
+  NDFileHDF5BatchConfigure(args[0].sval, args[1].ival, args[2].ival, args[3].sval,
                       args[4].ival, args[5].ival, args[6].ival);
 }
 
